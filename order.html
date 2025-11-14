@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+      <!-- Google Font: Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for search icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body{
+        background-color: white;
+    }
+ 
+ 
+  .order-container {
+    width: 90%;
+    margin: 40px auto;
+  }
+
+  /* ORDER HEADER ROW */
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 6px;
+    padding: 20px 25px;
+    flex-wrap: wrap;
+  }
+
+  .order-item {
+    flex: 1 1 18%;
+    text-align: center;
+    min-width: 160px;
+  }
+
+  .order-item h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .order-item p {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .download-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .download-btn:hover {
+    background-color: #0056b3;
+  }
+
+  /* PRODUCT SECTION */
+  .product-section {
+    margin-top: 30px;
+    border: 1px solid #aaa;
+    padding: 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+  }
+
+  .product-section img {
+    width: 150px;
+    margin-right: 40px;
+  }
+
+  .product-details {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    align-items: center;
+  }
+
+  .product-details div {
+    text-align: center;
+    flex: 1;
+  }
+
+  .product-details h4 {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .product-details p {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .price {
+    color: green;
+    font-weight: bold;
+  }
+
+  /* SHIPPING SECTION */
+  .shipping {
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    margin-top: 30px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+    .shipping1 {
+    background-color: white;
+    color: #007bff;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    margin-top: 30px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+   .track-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 87%;
+  }
+
+  .track-btn:hover {
+    background-color: #0056b3;
+  }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <!-- Logo & Brand -->
+    <div class="logo-section">
+      <div class="logo-wrapper">
+        <img src="image/image 64.png" alt="logo" class="logo-img">
+        <h2 class="brand-name"><span style="font-size: 56px;font-family: 'Brush Script MT', cursive; ">a</span>irnew</h2>
+      </div>
+    </div>
+
+
+  <!-- Navigation Links -->
+  <nav>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+      <li><a href="about.html">About us</a></li>
+    </ul>
+  </nav>
+
+    <div class="icons-section">
+      <img src="image/Photo by Clem Onojeghuo.png" alt="profile" class="profile-img" class="profile-pic" id="profilePic">
+      <!-- Popup Menu -->
+<div class="popup-menu" id="popupMenu">
+    <h3>My Accounts</h3>
+    <a href="account.html">Account Information</a>
+    <a href="order.html">My Order</a>
+    <a href="track.html">Tracking Order</a>
+    <a href="password.html">Password Manager</a>
+    <a href="logout.html">Logout</a>
+</div>
+
+<script>
+    const profilePic = document.getElementById('profilePic');
+    const popupMenu = document.getElementById('popupMenu');
+
+    // Toggle popup on click
+    profilePic.addEventListener('click', () => {
+        popupMenu.classList.toggle('show');
+    });
+
+    // Close popup when clicking outside
+    window.addEventListener('click', (e) => {
+        if (!profilePic.contains(e.target) && !popupMenu.contains(e.target)) {
+            popupMenu.classList.remove('show');
+        }
+    });
+</script>
+         <a href="wishlist.html" id="heartBtn" class="icon-btn heart-btn" title="Wishlist">
+        <i class="far fa-heart"></i>
+      </a>
+      <a href="cart.html" id="cartBtn" class="icon-btn cart-btn" title="View Cart">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+      <script>
+  const cartBtn = document.getElementById("cartBtn");
+    const heartBtn = document.getElementById("heartBtn");
+
+    const currentPage = window.location.pathname.split("/").pop();
+
+    // Activate cart dot if on cart page
+    if (currentPage === "cart.html") {
+      cartBtn.classList.add("active");
+    }
+
+    // Activate heart dot if on wishlist page
+    if (currentPage === "wishlist.html") {
+      heartBtn.classList.add("active");
+    }
+
+    // Optional: Toggle dot on click (for demo)
+    [cartBtn, heartBtn].forEach(btn => {
+      btn.addEventListener("click", e => {
+        const targetPage = btn.getAttribute("href").split("/").pop();
+        if (currentPage === targetPage) {
+          e.preventDefault(); // Avoid navigation while toggling
+          btn.classList.toggle("active");
+        }
+      });
+    });
+</script>
+      <button id="notifyBtn" class="notify-btn">
+      <i class="far fa-bell"></i>
+    </button>
+    <!-- Popup Modal -->
+  <div id="notificationModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="notification-box">
+        <h3>🛒 Sales & Offers Notifications</h3>
+        <ul>
+          <li>🔥 Big Offer: Grab your AirPad today with up to 30% OFF!</li>
+          <li>⏰ Hurry! Limited-time deal on AirPad products.</li>
+          <li>🛍️ Your cart is waiting – don’t miss out on your AirPad.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    </div>
+     <script>
+    const modal = document.getElementById("notificationModal");
+    const btn = document.getElementById("notifyBtn");
+    const closeBtn = document.querySelector(".close");
+
+    btn.onclick = () => modal.style.display = "block";
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+<div class="search-section">
+  <input type="text" id="searchInput" placeholder="Search...">
+  <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+
+  <div class="suggestion-box" id="suggestionBox">
+    <p id="airpodItem">Airpod Pro Earbands</p>
+  </div>
+</div>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+<script>
+let clickedOnce = false;
+
+const input = document.getElementById("searchInput");
+const box = document.getElementById("suggestionBox");
+const item = document.getElementById("airpodItem");
+
+input.addEventListener("click", function () {
+  if (!clickedOnce) {
+    box.style.display = "block";   // first click → show
+    clickedOnce = true;
+  } else {
+    window.location.href = "product1.html";  // second click → navigate
+  }
+});
+
+item.addEventListener("click", function () {
+  window.location.href = "product1.html";
+});
+</script>
+ <div class="order-container">
+
+  <!-- Order Info Row -->
+  <div class="order-header">
+    <div class="order-item">
+      <h3>Order ID</h3>
+      <p>#SJKD456FH</p>
+    </div>
+    <div class="order-item">
+      <h3>Payment Method</h3>
+      <p>G-PAY</p>
+    </div>
+    <div class="order-item">
+      <h3>Transaction ID</h3>
+      <p>TF59DHJK</p>
+    </div>
+    <div class="order-item">
+      <h3>Estimate Delivery Date</h3>
+      <p>28 June 2025</p>
+    </div>
+    <div class="order-item">
+      <button class="download-btn">Download Invoice</button>
+    </div>
+  </div>
+
+ <!-- Product Section -->
+  <div class="product-section">
+    <img src="image/Frame 427318987.png" alt="Airpod Pro">
+    <div class="product-details">
+      <div>
+        <h4>Product</h4>
+        <p>Airpad Pro Earband</p>
+      </div>
+      <div>
+        <h4>Date</h4>
+        <p>22 August 2025</p>
+      </div>
+      <div>
+        <h4>Price</h4>
+        <p class="price">$29</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shipping Section -->
+  <div class="shipping">
+    <span>Shipping</span>
+    <span>Rs.00.0</span>
+  </div>
+
+   <div class="shipping">
+    <span>Taxes</span>
+    <span>Rs.00.0</span>
+  </div>
+
+   <div class="shipping">
+    <span>Coupon Discount</span>
+    <span>$.200</span>
+  </div>
+
+
+   <div class="shipping1">
+    <span>Total</span>
+    <span style="color: rgb(142, 196, 60);">$29</span>
+  </div>
+
+
+  <button class="track-btn" onclick="window.location.href='track.html'">Track Order</button>
+</div>
+
+
+   <br>
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Logo Section -->
+    <div class="footer-logo">
+      <img src="image/image 64.png" alt="Airnew Logo">
+      <h2 class="brand-name1">airnew</h2>
+    </div>
+
+    <!-- Links Section -->
+    <div class="footer-links">
+      <div>
+        <h3>Customer service</h3>
+        <ul>
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Checkup</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Return</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blogs</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Policy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Our information</h3>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms & Condition</a></li>
+          <li><a href="#">Customer Feedback</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="footer-contact">
+      <p><strong>Mobile:</strong> 123-456-789</p>
+      <p><strong>Email:</strong> Airnew@gmail.com</p>
+      <p><strong>Address:</strong> 12, North City-001</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Airnew Co. All rights reserved.</p>
+    <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<!-- Font Awesome CDN -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+
+    <script src="script.js"></script>
+    </body>
+    </html>

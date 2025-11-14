@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+      <!-- Google Font: Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for search icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body{
+        background-color: white;
+    }
+      .checkout-container {
+      max-width: 1100px;
+      margin: 50px auto;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .checkout-container h2 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .checkout-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .product-image {
+      flex: 1;
+      min-width: 250px;
+      max-width: 320px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .product-details {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .product-details h3 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .product-details p {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    .product-details span {
+      color: #28a745;
+      font-weight: 500;
+    }
+
+    .order-summary {
+      flex: 1;
+      min-width: 250px;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      padding: 15px 20px;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .order-summary h4 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .order-summary hr {
+      border: none;
+      border-top: 1px dashed #aaa;
+      margin: 10px 0;
+    }
+
+    .order-summary p {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .order-summary p.total {
+      font-weight: 600;
+    }
+
+    .order-summary .total span {
+      color: #28a745;
+    }
+
+    .btn-pay {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-pay:hover {
+      background: #0056cc;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .checkout-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .order-summary {
+        width: 100%;
+      }
+      .product-image, .product-details {
+        text-align: center;
+      }
+    }
+.payment-section {
+  text-align: center;
+  position: relative;
+}
+
+.dropdown-btn {
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: black;
+}
+
+.popup {
+  display: none;
+  background-color: #007bff;
+  color: white;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 600px;
+  margin-left: 50%;
+  border: 2px solid black;
+}
+
+.popup h2 {
+  margin-bottom: 20px;
+  color: black;
+}
+
+.options {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.options label {
+  display: block;
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+#okBtn {
+  background-color: white;
+  color: #007bff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#okBtn:hover {
+  background-color: #f2f2f2;
+}
+  .success {
+    background-color: #007bff;
+  }
+
+  .success-icon {
+    font-size: 40px;
+    color: #00ff5e;
+  }
+</style>
+    </head>
+<body>
+
+  <header class="navbar">
+    <!-- Logo & Brand -->
+    <div class="logo-section">
+      <div class="logo-wrapper">
+        <img src="image/image 64.png" alt="logo" class="logo-img">
+        <h2 class="brand-name"><span style="font-size: 56px;font-family: 'Brush Script MT', cursive; ">a</span>irnew</h2>
+      </div>
+    </div>
+
+
+  <!-- Navigation Links -->
+  <nav>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" >Products</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+      <li><a href="about.html" class="active">About us <span></span></a></li>
+    </ul>
+  </nav>
+
+    <div class="icons-section">
+      <img src="image/Photo by Clem Onojeghuo.png" alt="profile" class="profile-img" class="profile-pic" id="profilePic">
+      <!-- Popup Menu -->
+<div class="popup-menu" id="popupMenu">
+    <h3>My Accounts</h3>
+    <a href="account.html">Account Information</a>
+    <a href="order.html">My Order</a>
+    <a href="track.html">Tracking Order</a>
+    <a href="password.html">Password Manager</a>
+    <a href="logout.html">Logout</a>
+</div>
+
+<script>
+    const profilePic = document.getElementById('profilePic');
+    const popupMenu = document.getElementById('popupMenu');
+
+    // Toggle popup on click
+    profilePic.addEventListener('click', () => {
+        popupMenu.classList.toggle('show');
+    });
+
+    // Close popup when clicking outside
+    window.addEventListener('click', (e) => {
+        if (!profilePic.contains(e.target) && !popupMenu.contains(e.target)) {
+            popupMenu.classList.remove('show');
+        }
+    });
+</script>
+         <a href="wishlist.html" id="heartBtn" class="icon-btn heart-btn" title="Wishlist">
+        <i class="far fa-heart"></i>
+      </a>
+     <a href="cart.html" id="cartBtn" class="icon-btn cart-btn" title="View Cart">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+      <script>
+  const cartBtn = document.getElementById("cartBtn");
+    const heartBtn = document.getElementById("heartBtn");
+
+    const currentPage = window.location.pathname.split("/").pop();
+
+    // Activate cart dot if on cart page
+    if (currentPage === "cart.html") {
+      cartBtn.classList.add("active");
+    }
+
+    // Activate heart dot if on wishlist page
+    if (currentPage === "wishlist.html") {
+      heartBtn.classList.add("active");
+    }
+
+    // Optional: Toggle dot on click (for demo)
+    [cartBtn, heartBtn].forEach(btn => {
+      btn.addEventListener("click", e => {
+        const targetPage = btn.getAttribute("href").split("/").pop();
+        if (currentPage === targetPage) {
+          e.preventDefault(); // Avoid navigation while toggling
+          btn.classList.toggle("active");
+        }
+      });
+    });
+</script>
+       <button id="notifyBtn" class="notify-btn">
+      <i class="far fa-bell"></i>
+    </button>
+    <!-- Popup Modal -->
+  <div id="notificationModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="notification-box">
+        <h3>🛒 Sales & Offers Notifications</h3>
+        <ul>
+          <li>🔥 Big Offer: Grab your AirPad today with up to 30% OFF!</li>
+          <li>⏰ Hurry! Limited-time deal on AirPad products.</li>
+          <li>🛍️ Your cart is waiting – don’t miss out on your AirPad.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    </div>
+     <script>
+    const modal = document.getElementById("notificationModal");
+    const btn = document.getElementById("notifyBtn");
+    const closeBtn = document.querySelector(".close");
+
+    btn.onclick = () => modal.style.display = "block";
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+<div class="search-section">
+  <input type="text" id="searchInput" placeholder="Search...">
+  <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+
+  <div class="suggestion-box" id="suggestionBox">
+    <p id="airpodItem">Airpod Pro Earbands</p>
+  </div>
+</div>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+<script>
+let clickedOnce = false;
+
+const input = document.getElementById("searchInput");
+const box = document.getElementById("suggestionBox");
+const item = document.getElementById("airpodItem");
+
+input.addEventListener("click", function () {
+  if (!clickedOnce) {
+    box.style.display = "block";   // first click → show
+    clickedOnce = true;
+  } else {
+    window.location.href = "product1.html";  // second click → navigate
+  }
+});
+
+item.addEventListener("click", function () {
+  window.location.href = "product1.html";
+});
+</script>
+   <div class="checkout-container">
+    <h2>Billing Check out Details</h2>
+
+    <div class="checkout-content">
+      <div class="product-image">
+        <img src="image/Frame 427318987.png" alt="Airpod Pro Earband">
+      </div>
+
+      <div class="product-details">
+        <h3>Product</h3>
+        <p>Airpad Pro Earband</p>
+
+        <h3>Date</h3>
+        <p>22 August 2025</p>
+
+        <h3>Price</h3>
+        <p><span>$29</span></p>
+      </div>
+
+      <div class="order-summary">
+        <h4>Order Summary</h4>
+        <hr>
+        <p><span>Items</span> <span>1</span></p>
+        <p><span>Subtotal</span> <span>$0.31</span></p>
+        <p><span>Shipping</span> <span>$0.00</span></p>
+        <p><span>Taxes</span> <span>$0.00</span></p>
+        <p><span>Coupon Discount</span> <span>$0.20</span></p>
+        <hr>
+        <p class="total"><span>Total</span> <span>$29</span></p>
+        
+      </div>
+    </div>
+
+</div>
+ <div class="payment-section">
+  <button id="paymentBtn" class="dropdown-btn">Payment ▼</button>
+
+  <!-- Payment method popup -->
+  <div id="paymentPopup" class="popup">
+    <h2>Payment ▲</h2>
+    <div class="options">
+      <label><input type="radio" name="pay" value="Google Pay"> Google Pay <img src="image/gpay-removebg-preview.png" alt="gpay" width="50"></label>
+      <label><input type="radio" name="pay" value="PhonePe"> PhonePe  <img src="image/phonepe-removebg-preview.png" alt="phonepe" width="50"></label>
+      <label><input type="radio" name="pay" value="Paytm"> Paytm  <img src="image/paytm-removebg-preview.png" alt="pay" width="50"></label>
+    </div>
+    <button id="okBtn">OK</button>
+  </div>
+
+  <!-- UPI input popup -->
+  <div id="upiPopup" class="popup">
+    <h3>Name :</h3>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <h3>Enter UPI ID :</h3>
+    <input type="text" id="upiInput" placeholder="example@upi">
+    <br>
+    <img src="image/gpay-removebg-preview.png" alt="gpay" style="margin-left: 45%;margin-bottom: 30px;">
+    <button id="proceedBtn">Proceed</button>
+  </div>
+
+  <!-- Success popup -->
+  <div id="successPopup" class="popup success">
+    <div class="success-icon">✔</div>
+    <h2>Payment Successfully Done</h2>
+  </div>
+</div>
+
+<script>
+  const paymentBtn = document.getElementById('paymentBtn');
+  const paymentPopup = document.getElementById('paymentPopup');
+  const okBtn = document.getElementById('okBtn');
+  const upiPopup = document.getElementById('upiPopup');
+  const proceedBtn = document.getElementById('proceedBtn');
+  const successPopup = document.getElementById('successPopup');
+
+  // Show payment popup
+  paymentBtn.onclick = () => {
+    paymentPopup.style.display = 'block';
+  };
+
+  // When OK is clicked
+  okBtn.onclick = () => {
+    const selected = document.querySelector('input[name="pay"]:checked');
+    if (!selected) {
+      alert('Please select a payment method!');
+      return;
+    }
+    paymentPopup.style.display = 'none';
+    upiPopup.style.display = 'block';
+  };
+
+  // When Proceed is clicked
+  proceedBtn.onclick = () => {
+    const name = document.getElementById('nameInput').value.trim();
+    const upi = document.getElementById('upiInput').value.trim();
+
+    if (name === '' || upi === '') {
+      alert('Please fill in all fields!');
+      return;
+    }
+
+    upiPopup.style.display = 'none';
+    successPopup.style.display = 'block';
+
+    // Show success popup briefly, then redirect
+    setTimeout(() => {
+      successPopup.style.display = 'none';
+      // Redirect to order page
+      window.location.href = 'order.html';  // Change this to your actual order page file
+    }, 2000);
+  };
+</script>
+
+<section class="banner2">
+  <img src="image/image 23.png" alt="Contact Banner" class="banner-img"  style="width: 800px;margin-left: 23%;margin-top:25px;"/>
+</section>
+<footer class="footer" style="margin-top: -53px;">
+  <div class="footer-container">
+
+    <!-- Logo Section -->
+    <div class="footer-logo">
+      <img src="image/image 64.png" alt="Airnew Logo">
+      <h2 class="brand-name1">airnew</h2>
+    </div>
+
+    <!-- Links Section -->
+    <div class="footer-links">
+      <div>
+        <h3>Customer service</h3>
+        <ul>
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Checkup</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Return</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Blogs</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Policy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Our information</h3>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms & Condition</a></li>
+          <li><a href="#">Customer Feedback</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="footer-contact">
+      <p><strong>Mobile:</strong> 123-456-789</p>
+      <p><strong>Email:</strong> Airnew@gmail.com</p>
+      <p><strong>Address:</strong> 12, North City-001</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Airnew Co. All rights reserved.</p>
+    <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<!-- Font Awesome CDN -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+
+    <script src="script.js"></script>
+    </body>
+    </html>

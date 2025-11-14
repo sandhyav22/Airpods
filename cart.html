@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+      <!-- Google Font: Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for search icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body{
+        background-color: white;
+    }
+    
+    /* Header Row */
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #000;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .cart-header div {
+      flex: 1;
+    }
+
+    /* Cart Item */
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .cart-item img {
+      width: 130px;
+      border-radius: 10px;
+    }
+
+    .cart-item .product-name {
+      font-weight: 500;
+      font-size: 18px;
+      flex: 1;
+      min-width: 180px;
+       margin-left:22%;
+    }
+
+    /* Quantity Control */
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid #000;
+      border-radius: 30px;
+      padding: 5px 15px;
+      gap: 10px;
+      margin-right:22%;
+    }
+
+    .quantity-control button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .quantity-control span {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .cart-item .price {
+      color: green;
+      font-weight: 600;
+      min-width: 80px;
+   
+    }
+
+    /* Coupon Section */
+    .coupon-section {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+      margin-left: 15%;
+    }
+
+    .coupon-section input {
+      padding: 10px 25px;
+      border: 1px solid #000;
+      border-radius: 30px;
+      outline: none;
+      font-size: 16px;
+      min-width: 220px;
+      text-align: center;
+    }
+
+    .coupon-section button {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #fff;
+      background-color: #007bff;
+    }
+
+    .coupon-section button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Cart Bottom Section */
+    .cart-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Order Summary */
+    .order-summary {
+      border: 1px solid #000;
+      border-radius: 10px;
+      padding: 20px;
+      min-width: 280px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      margin-right: 20%;
+    }
+
+    .order-summary h3 {
+      margin-top: 0;
+      border-bottom: 1px dashed #999;
+      padding-bottom: 10px;
+    }
+
+    .order-summary p {
+      margin: 8px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .order-summary p span {
+      color: #333;
+    }
+
+    .order-summary .total {
+      border-top: 1px dashed #999;
+      padding-top: 10px;
+      font-weight: 600;
+      color: green;
+    }
+
+    .order-summary button {
+      width: 100%;
+      padding: 10px 0;
+      border: none;
+      border-radius: 30px;
+      background-color: #007bff;
+      color: #fff;
+      font-weight: 500;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .order-summary button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Clear cart */
+    .clear-cart {
+      position: relative;
+      color: #007bff;
+      font-size: 20px;
+      font-weight: 500;
+      display: inline-block;
+      text-align: center;
+      cursor: pointer;
+      margin-left: 40%;
+    }
+
+    .clear-cart::before,
+    .clear-cart::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      width: 8px;
+      height: 8px;
+      background: #007bff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .clear-cart::before {
+      left: -12px;
+    }
+
+    .clear-cart::after {
+      right: -12px;
+    }
+
+    .clear-cart::after,
+    .clear-cart::before {
+      transition: all 0.3s ease;
+    }
+
+    .clear-cart::after {
+      content: '';
+    }
+
+    /* Underline with glow effect */
+    .clear-cart::selection {
+      background: none;
+    }
+
+    .clear-cart span {
+      position: relative;
+    }
+
+    .clear-cart span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: #007bff;
+      box-shadow: 0 2px 6px rgba(0, 123, 255, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cart-header {
+        display: none;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .coupon-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cart-bottom {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .order-summary {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <!-- Logo & Brand -->
+    <div class="logo-section">
+      <div class="logo-wrapper">
+        <img src="image/image 64.png" alt="logo" class="logo-img">
+        <h2 class="brand-name"><span style="font-size: 56px;font-family: 'Brush Script MT', cursive; ">a</span>irnew</h2>
+      </div>
+    </div>
+
+
+  <!-- Navigation Links -->
+  <nav>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" >Products</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+      <li><a href="about.html">About us </a></li>
+    </ul>
+  </nav>
+
+    <div class="icons-section">
+      <img src="image/Photo by Clem Onojeghuo.png" alt="profile" class="profile-img" class="profile-pic" id="profilePic">
+      <!-- Popup Menu -->
+<div class="popup-menu" id="popupMenu">
+    <h3>My Accounts</h3>
+    <a href="account.html">Account Information</a>
+    <a href="order.html">My Order</a>
+    <a href="track.html">Tracking Order</a>
+    <a href="password.htm;">Password Manager</a>
+    <a href="logout.html">Logout</a>
+</div>
+
+<script>
+    const profilePic = document.getElementById('profilePic');
+    const popupMenu = document.getElementById('popupMenu');
+
+    // Toggle popup on click
+    profilePic.addEventListener('click', () => {
+        popupMenu.classList.toggle('show');
+    });
+
+    // Close popup when clicking outside
+    window.addEventListener('click', (e) => {
+        if (!profilePic.contains(e.target) && !popupMenu.contains(e.target)) {
+            popupMenu.classList.remove('show');
+        }
+    });
+</script>
+        <a href="wishlist.html" id="heartBtn" class="icon-btn heart-btn" title="Wishlist">
+        <i class="far fa-heart"></i>
+      </a>
+     <a href="cart.html" id="cartBtn" class="icon-btn cart-btn" title="View Cart">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+      <script>
+  const cartBtn = document.getElementById("cartBtn");
+    const heartBtn = document.getElementById("heartBtn");
+
+    const currentPage = window.location.pathname.split("/").pop();
+
+    // Activate cart dot if on cart page
+    if (currentPage === "cart.html") {
+      cartBtn.classList.add("active");
+    }
+
+    // Activate heart dot if on wishlist page
+    if (currentPage === "wishlist.html") {
+      heartBtn.classList.add("active");
+    }
+
+    // Optional: Toggle dot on click (for demo)
+    [cartBtn, heartBtn].forEach(btn => {
+      btn.addEventListener("click", e => {
+        const targetPage = btn.getAttribute("href").split("/").pop();
+        if (currentPage === targetPage) {
+          e.preventDefault(); // Avoid navigation while toggling
+          btn.classList.toggle("active");
+        }
+      });
+    });
+</script>
+     <button id="notifyBtn" class="notify-btn">
+      <i class="far fa-bell"></i>
+    </button>
+    <!-- Popup Modal -->
+  <div id="notificationModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="notification-box">
+        <h3>🛒 Sales & Offers Notifications</h3>
+        <ul>
+          <li>🔥 Big Offer: Grab your AirPad today with up to 30% OFF!</li>
+          <li>⏰ Hurry! Limited-time deal on AirPad products.</li>
+          <li>🛍️ Your cart is waiting – don’t miss out on your AirPad.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    </div>
+     <script>
+    const modal = document.getElementById("notificationModal");
+    const btn = document.getElementById("notifyBtn");
+    const closeBtn = document.querySelector(".close");
+
+    btn.onclick = () => modal.style.display = "block";
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+<div class="search-section">
+  <input type="text" id="searchInput" placeholder="Search...">
+  <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+
+  <div class="suggestion-box" id="suggestionBox">
+    <p id="airpodItem">Airpod Pro Earbands</p>
+  </div>
+</div>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+<script>
+let clickedOnce = false;
+
+const input = document.getElementById("searchInput");
+const box = document.getElementById("suggestionBox");
+const item = document.getElementById("airpodItem");
+
+input.addEventListener("click", function () {
+  if (!clickedOnce) {
+    box.style.display = "block";   // first click → show
+    clickedOnce = true;
+  } else {
+    window.location.href = "product1.html";  // second click → navigate
+  }
+});
+
+item.addEventListener("click", function () {
+  window.location.href = "product1.html";
+});
+</script>
+    <div class="cart-container">
+    <div class="cart-header">
+      <div>Product</div>
+      <div>Names</div>
+      <div>Quantity</div>
+      <div>Price</div>
+    </div>
+
+    <div class="cart-item">
+      <img src="image/Frame 427318987.png" alt="Airpad Pro Earband" />
+      <div class="product-name">Airpad Pro Earband</div>
+      <div class="quantity-control">
+        <button>-</button>
+        <span>1</span>
+        <button>+</button>
+      </div>
+      <div class="price">$29</div>
+    </div>
+
+    <div class="coupon-section">
+      <input type="text" placeholder="Coupon code" />
+      <button>Apply coupon</button>
+    </div>
+
+    <div class="cart-bottom">
+      <div class="clear-cart">
+    <span>Clear Shopping cart</span>
+  </div>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <p><span>Items</span><span>1</span></p>
+        <p><span>Subtotal</span><span>$29.00</span></p>
+        <p><span>Shipping</span><span>$0.00</span></p>
+        <p><span>Taxes</span><span>$0.00</span></p>
+        <p><span>Coupon Discount</span><span>-$2.00</span></p>
+        <p class="total"><span>Total</span><span>$27.00</span></p>
+        <button onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
